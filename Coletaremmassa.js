@@ -24,87 +24,15 @@ if (typeof version == 'undefined') {
 //set translations
 var langShinko = [
     "Coletar em massa",
-    "Selecione os tipos de unidades/ORDEM para saquear (arraste as unidades para ordenar)",
+    "Selecione os tipos de unidades e arraste as unidades para ordenar",
     "Selecione as categorias a usar",
     "Quando você quer que os saques retornem (aproximadamente)?",
     "Duração aqui",
     "Calcular duração para cada página",
     "Criador: ",
     "Coleta em massa: enviar por 50 aldeias",
-    "Lançar grupo "
+    "Enviar grupo "
 ]
-
-if (game_data.locale == "ro_RO") {
-    //romanian server
-    langShinko = [
-        "Curatare in masa",
-        "Selecteaza tipul unitatii/ORDONEAZA sa curete cu (trage unitatea pentru a ordona)",
-        "Selecteaza categoria",
-        "Cand vrei sa se intoarca trupele de la curatare (aproximativ)",
-        "Durata aici",
-        "Calculeaza durata pentru fiecare pagina",
-        "Creator: ",
-        "Cueatare in masa: trimite pe 50 de sate",
-        "Lanseaza grup "
-    ]
-}
-if (game_data.locale == "ar_AE") {
-    //arabic server
-    langShinko = [
-        "Ø§Ù„Ø§ØºØ§Ø±Ø§Øª",
-        "Ø§Ø®ØªØ§Ø± Ø§Ù„ÙˆØ­Ø¯Ø§Øª Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…Ø© ÙÙ‰ Ø§Ù„Ø§ØºØ§Ø±Ø§Øª",
-        "Ø§Ø®ØªØ§Ø± Ø§Ù†ÙˆØ§Ø¹   Ø§Ù„Ø§ØºØ§Ø±Ø§Øª Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…Ø© ",
-        " Ù…Ø§ Ø§Ù„Ù…Ø¯Ù‡ Ø§Ù„Ù…Ø¯Ù‡ Ø§Ù„Ø²Ù…Ù†ÙŠÙ‡ Ø§Ù„Ù…Ø±Ø§Ø¯ Ø§Ø±Ø³Ø§Ù„ Ø§Ù„Ø§ØºØ§Ø±Ø§Øª Ø¨Ù‡Ø§",
-        "Ø¶Ø¹ Ø§Ø§Ù„Ù…Ø¯Ù‡ Ù‡Ù†Ø§",
-        "Ø­Ø³Ø§Ø¨ Ø§Ù„Ù…Ø¯Ù‡ Ù„ÙƒÙ„ ØµÙØ­Ù‡ ",
-        "Creator: ",
-        "Ø§Ù„Ø§ØºØ§Ø±Ø§Øª : ØªØ±Ø³Ù„ Ù„ÙƒÙ„ 50 Ù‚Ø±ÙŠÙ‡ Ø¹Ù„Ù‰ Ø­Ø¯Ù‰ ",
-        " ØªØ´ØºÙŠÙ„ Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹Ø© "
-    ]
-}
-if (game_data.locale == "el_GR") {
-    //greek server
-    langShinko = [
-        "ÎœÎ±Î¶Î¹ÎºÎ® ÏƒÎ¬ÏÏ‰ÏƒÎ·",
-        "Î•Ï€Î¹Î»Î­Î¾Ï„Îµ Ï„Î¹Ï‚ Î¼Î¿Î½Î¬Î´ÎµÏ‚ Î¼Îµ Ï„Î¹Ï‚ Î¿Ï€Î¿Î¯ÎµÏ‚ Î¸Î± ÎºÎ¬Î½ÎµÏ„Îµ ÏƒÎ¬ÏÏ‰ÏƒÎ·",
-        "Î•Ï€Î¹Î»Î­Î¾Ï„Îµ ÎµÏ€Î¯Ï€ÎµÎ´Î± ÏƒÎ¬ÏÏ‰ÏƒÎ·Ï‚ Ï€Î¿Ï… Î¸Î± Ï‡ÏÎ·ÏƒÎ¹Î¼Î¿Ï€Î¿Î¹Î·Î¸Î¿ÏÎ½",
-        "Î§ÏÏŒÎ½Î¿Ï‚ Î£Î¬ÏÏ‰ÏƒÎ·Ï‚ (ÎÏÎµÏ‚.Î›ÎµÏ€Ï„Î¬)",
-        "Î§ÏÏŒÎ½Î¿Ï‚",
-        "Î¥Ï€Î¿Î»ÏŒÎ³Î¹ÏƒÎµ Ï‡ÏÏŒÎ½Î¿Ï…Ï‚ ÏƒÎ¬ÏÏ‰ÏƒÎ·Ï‚ Î³Î¹Î± ÎºÎ¬Î¸Îµ ÏƒÎµÎ»Î¯Î´Î±.",
-        "Î”Î·Î¼Î¹Î¿Ï…ÏÎ³ÏŒÏ‚: ",
-        "ÎœÎ±Î¶Î¹ÎºÎ® ÏƒÎ¬ÏÏ‰ÏƒÎ·: Î‘Ï€Î¿ÏƒÏ„Î¿Î»Î® Î±Î½Î± 50 Ï‡Ï‰ÏÎ¹Î¬",
-        "Î‘Ï€Î¿ÏƒÏ„Î¿Î»Î® Î¿Î¼Î¬Î´Î±Ï‚ "
-    ]
-}
-if (game_data.locale == "nl_NL") {
-    //dutch server
-    langShinko = [
-        "Massa rooftochten",
-        "Kies welke troeptypes je wil mee roven, sleep om prioriteit te ordenen",
-        "Kies categorieÃ«n die je wil gebruiken",
-        "Wanneer wil je dat je rooftochten terug zijn?",
-        "Looptijd hier invullen",
-        "Bereken rooftochten voor iedere pagina",
-        "Scripter: ",
-        "Massa rooftochten: verstuur per 50 dorpen",
-        "Verstuur groep "
-    ]
-}
-if (game_data.locale == "it_IT") {
-    //Italian server
-    langShinko = [
-        "Rovistamento di massa",
-        "Seleziona i tipi da unitÃ  con cui rovistare",
-        "Seleziona quali categorie utilizzare",
-        "Inserisci la durata voluta dei rovistamenti in ORE",
-        "Inserisci qui il tempo",
-        "Calcola tempi per tutte le pagine",
-        "Creatore: ",
-        "Rovistamento di massa: manda su 50 villaggi",
-        "Lancia gruppo"
-    ]
-}
-
 //loading settings
 
 // troop types
@@ -792,10 +720,10 @@ html = `
         <tr id="runtimes" style="text-align:center; width:auto; background-color:${headerColor}">
             <td style="background-color:${headerColor};"></td>
             <td style="text-align:center; width:auto; background-color:${headerColor};padding: 10px;">
-                <font color="${titleColor}">Off villages</font>
+                <font color="${titleColor}">Vila de ataque</font>
             </td>
             <td style="text-align:center; width:auto; background-color:${headerColor};padding: 10px;">
-                <font color="${titleColor}">Def villages</font>
+                <font color="${titleColor}">Vila de defesa</font>
             </td>
         </tr>
         <tr>
