@@ -206,8 +206,8 @@ else {
 if (localStorage.getItem("runTimes") == null) {
     console.log("No runTimes found, making new one")
     var runTimes = {
-        "off": 2.5,
-        "def": 2.5
+        "off": 3,
+        "def": 3
     }
     localStorage.setItem("runTimes", JSON.stringify(runTimes));
 }
