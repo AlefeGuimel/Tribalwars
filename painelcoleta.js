@@ -10,7 +10,7 @@ const globalData = {
   running: false,
   minimize: false,
   groupId: 0,
-  version: "1.4.0",
+  version: "1.0.0",
   time: undefined,
   time2: undefined,
   delayBetweenScavenge: 120,         // segundos
@@ -24,12 +24,6 @@ const globalData = {
 
 const changeLog = {
   "1.0.0": "Basic auto scavenge script.",
-  "1.1.0": "UI added.",
-  "1.1.1": "Links to discord.",
-  "1.1.2": "Minor changes in UI.",
-  "1.2.0": "Added the possibility to farm until a certain hour.",
-  "1.3.0": "Auto Unlock Scavenge implemented.",
-  "1.4.0": "Timeout fixes."
 };
 
 let groupData, UIIds, storageIds;
@@ -207,7 +201,6 @@ function startUI() {
     <button id="${UIIds.resetPrefsId}" class="btn">Redefinir</button>
     <button id="${UIIds.startButtonId}" class="btn"></button>
     <span style="float:right">
-      Problemas? <a href="https://discord.gg/7qATtfsW9V">Discord</a> | feito por Im Kumin
     </span>
   </td></tr>`;
 
@@ -445,8 +438,17 @@ function scavenge() {
     if (diff < offH * 3600000) offH = (diff - defH*3600000) / 3600000;
     if (diff < defH * 3600000) defH = (diff - offH*3600000) / 3600000;
   }
-  document.querySelector(".runTime_off").value = offH;
-  document.querySelector(".runTime_def").value = defH;
+    const offInput = document.querySelector('input.runTime_off') 
+                || document.querySelector('input[name="runTime_off"]');
+  const defInput = document.querySelector('input.runTime_def') 
+                || document.querySelector('input[name="runTime_def"]');
+
+  if (offInput && defInput) {
+    offInput.value = offH;
+    defInput.value = defH;
+  } else {
+    console.error("❌ Inputs de runTime não encontrados", offInput, defInput);
+  }
 
   // Dispara “Calcular runtimes”
   if (calculateRunTimes() || runTimesClicked < 1 || retries <= 5) {
@@ -461,18 +463,22 @@ function scavenge() {
 }
 
 function calculateRunTimes() {
-  const btn = document.getElementById("sendMass");
+  // Tenta por ID, ou por texto “Enviar grupo”
+  let btn = document.getElementById("sendMass")
+         || document.querySelector('[id^="sendMass"]')
+         || Array.from(document.querySelectorAll('input[type="submit"], button'))
+              .find(el => /Enviar grupo/i.test(el.value || el.textContent));
+  
   if (btn) {
-    runTimesClicked++;
     btn.click();
-    console.log("Send Mass Success");
+    console.log("⚡️ Botão de enviar clicado");
     return true;
   } else {
-    retries++;
-    console.warn("Launch failed");
+    console.warn("🚨 Botão de envio não encontrado");
     return false;
   }
 }
+
 
 // ============================================================
 // 13) Auto-unlock (quando habilitado)
