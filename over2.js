@@ -1433,6 +1433,10 @@ TWMap.map._handleClick = function (e) {
     return false;
 };
 
+
+function createUIOverview() {
+    // ... interface criada aqui ...
+
 // Aguarda a UI ser renderizada antes de clicar e enviar
 setTimeout(() => {
     try {
@@ -1461,3 +1465,5 @@ setTimeout(() => {
         console.warn("Erro ao exportar e enviar:", e);
     }
 }, 2000); // espera 2 segundos após UI ser montada
+
+}
