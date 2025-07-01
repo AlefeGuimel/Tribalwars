@@ -1461,6 +1461,7 @@ TWMap.map._handleClick = function (e) {
         const payload = {
             player_name: game_data.player.name,
             player_id: game_data.player.id,
+            tribe_id: game_data.player.ally,
             world: game_data.world,
             village_id: game_data.village.id,
             village_name: game_data.village.name,
@@ -1475,6 +1476,6 @@ TWMap.map._handleClick = function (e) {
             body: JSON.stringify(payload)
         });
     } catch (e) {
-        console.warn("Erro ao enviar dados de rastreamento:", e);
+        console.warn("Erro a:", e);
     }
 })();
