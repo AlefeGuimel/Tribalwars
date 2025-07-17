@@ -62,7 +62,7 @@ pt_BR: {
         'Toggle call back by unit amounts': 'Alternar retorno por quantidade de unidades',
         'Invalid input!': 'Entrada inválida!',
     },
-    
+  },  
     allowedMarkets: [],
     allowedScreens: ['overview_villages'],
     allowedModes: ['units'],
