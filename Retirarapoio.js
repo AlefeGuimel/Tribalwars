@@ -1,3 +1,19 @@
+/*
+ * Script Name: Support Counter Evolved
+ * Version: v1.1.4
+ * Last Updated: 2024-10-02
+ * Author: RedAlert
+ * Author URL: https://twscripts.dev/
+ * Author Contact: redalert_tw (Discord)
+ * Approved: N/A
+ * Approved Date: 2023-01-18
+ * Mod: JawJaw
+ */
+
+/*--------------------------------------------------------------------------------------
+ * This script can NOT be cloned and modified without permission from the script author.
+ --------------------------------------------------------------------------------------*/
+
 // User Input
 if (typeof DEBUG !== 'boolean') DEBUG = false;
 if (typeof HC_AMOUNT === 'undefined') HC_AMOUNT = null;
@@ -16,41 +32,37 @@ var scriptConfig = {
             'https://forum.tribalwars.net/index.php?threads/support-counter-evolved.289857/',
     },
     translations: {
-        en_DK: {
-            'Support Counter Evolved': 'Support Counter Evolved',
-            Help: 'Help',
-            'Redirecting...': 'Redirecting...',
-            'Support in your own villages': 'Support in your own villages',
-            'Support in other players villages':
-                'Support in other players villages',
-            'Support in barbarian villages': 'Support in barbarian villages',
-            population: 'population',
-            Withdraw: 'Withdraw',
-            'Player:': 'Player:',
-            pop: 'pop',
-            'Village Name': 'Village Name',
-            Action: 'Action',
-            'Mass Withdraw': 'Mass Withdraw',
-            TOTAL: 'TOTAL',
-            'supports selected': 'supports selected',
-            'There was an error fetching supports data!':
-                'There was an error fetching supports data!',
-            'Amount of troops to call back in %':
-                'Amount of troops to call back in %',
-            '(example 20 for 20%)': '(example 20 for 20%)',
-            'Fill Units': 'Fill Units',
-            'Invalid amount!': 'Invalid amount!',
-            Village: 'Village',
-            Population: 'Population',
-            'Fetching support data ...': 'Fetching support data ...',
-            'Total Units': 'Total Units',
-            'Selected Units': 'Selected Units',
-            'Remaining Units': 'Remaining Units',
-            'Toggle call back by unit amounts':
-                'Toggle call back by unit amounts',
-            'Invalid input!': 'Invalid input!',
-        },
+pt_BR: {
+        'Support Counter Evolved': 'Contador de Apoios Evoluído',
+        Help: 'Ajuda',
+        'Redirecting...': 'Redirecionando...',
+        'Support in your own villages': 'Apoios nas suas próprias aldeias',
+        'Support in other players villages': 'Apoios nas aldeias de outros jogadores',
+        'Support in barbarian villages': 'Apoios em aldeias bárbaras',
+        population: 'população',
+        Withdraw: 'Retirar',
+        'Player:': 'Jogador:',
+        pop: 'pop',
+        'Village Name': 'Nome da Aldeia',
+        Action: 'Ação',
+        'Mass Withdraw': 'Retirada em Massa',
+        TOTAL: 'TOTAL',
+        'supports selected': 'apoios selecionados',
+        'There was an error fetching supports data!': 'Ocorreu um erro ao buscar os dados de apoio!',
+        'Amount of troops to call back in %': 'Quantidade de tropas para retornar em %',
+        '(example 20 for 20%)': '(exemplo: 20 para 20%)',
+        'Fill Units': 'Preencher Unidades',
+        'Invalid amount!': 'Quantidade inválida!',
+        Village: 'Aldeia',
+        Population: 'População',
+        'Fetching support data ...': 'Buscando dados de apoio ...',
+        'Total Units': 'Unidades Totais',
+        'Selected Units': 'Unidades Selecionadas',
+        'Remaining Units': 'Unidades Restantes',
+        'Toggle call back by unit amounts': 'Alternar retorno por quantidade de unidades',
+        'Invalid input!': 'Entrada inválida!',
     },
+    
     allowedMarkets: [],
     allowedScreens: ['overview_villages'],
     allowedModes: ['units'],
