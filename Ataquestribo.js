@@ -20,8 +20,8 @@ if (typeof DEBUG !== 'boolean') DEBUG = false;
 // Script Config
 var scriptConfig = {
     scriptData: {
-        prefix: 'tribePlayersUnderAttack',
-        name: 'Tribe Players Under Attack',
+        prefix: 'Jogadores da tribo sobre ataque',
+        name: 'Jogadores da tribo sobre ataque',
         version: 'v1.2.5',
         author: 'RedAlert',
         authorUrl: 'https://twscripts.dev/',
@@ -29,6 +29,35 @@ var scriptConfig = {
             'https://forum.tribalwars.net/index.php?threads/tribe-players-under-attack-tribe-leader.287111/',
     },
     translations: {
+        en_DK: {
+            'Tribe Players Under Attack': 'Jogadores da tribo sobre ataque',
+            Help: 'Ajuda',
+            'Error fetching player incomings!':
+                'Erro ao buscar dados dos jogadores!',
+            Village: 'Aldeia',
+            Support: 'Suporte',
+            'Villages under attack:': 'Aldeias sob ataque:',
+            'No player is under attack!': 'Nenhum jogador sobre ataque!',
+            'Player Name': 'Nome do jogador',
+            Incomings: 'Entradas',
+            'Incs/Village Under Attack:': 'Comandos/Aldeias sobre ataque:',
+            'Incs/Total Village:': 'Comandos/Total das aldeias:',
+            'There was an error!': 'Ops! Houve um erro!',
+        },
+        fr_FR: {
+            'Tribe Players Under Attack': 'Joueur tribu sous attaque',
+            Help: 'Aide',
+            'Error fetching player incomings!':
+                'Erreur chargement ordres entrants!',
+            Village: 'Village',
+            Support: 'Support',
+            'No player is under attack!': 'Aucun joueur sous attaque!',
+            'Player Name': 'Pseudo du joueur',
+            Incomings: 'Entrants',
+            'Incs/Village Under Attack:': 'Ordres/Village sous Attaque:',
+            'Incs/Total Village:': 'Ordres/Total Village:',
+            'There was an error!': 'Oupsi il y a eu une erreur!',
+        },
         br_BR: {
             'Tribe Players Under Attack': 'Jogadores da tribo sobre ataque',
             Help: 'Ajuda',
