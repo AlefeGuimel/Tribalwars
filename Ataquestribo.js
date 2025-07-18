@@ -58,7 +58,7 @@ var scriptConfig = {
             'Incs/Total Village:': 'Ordres/Total Village:',
             'There was an error!': 'Oupsi il y a eu une erreur!',
         },
-        br_BR: {
+        pt_BR: {
             'Tribe Players Under Attack': 'Jogadores da tribo sobre ataque',
             Help: 'Ajuda',
             'Error fetching player incomings!':
