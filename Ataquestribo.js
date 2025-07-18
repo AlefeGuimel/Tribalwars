@@ -29,6 +29,35 @@ var scriptConfig = {
             'https://forum.tribalwars.net/index.php?threads/tribe-players-under-attack-tribe-leader.287111/',
     },
     translations: {
+        en_DK: {
+            'Tribe Players Under Attack': 'Tribe Players Under Attack',
+            Help: 'Help',
+            'Error fetching player incomings!':
+                'Error fetching player incomings!',
+            Village: 'Village',
+            Support: 'Support',
+            'Villages under attack:': 'Villages under attack:',
+            'No player is under attack!': 'No player is under attack!',
+            'Player Name': 'Player Name',
+            Incomings: 'Incomings',
+            'Incs/Village Under Attack:': 'Incs/Village Under Attack:',
+            'Incs/Total Village:': 'Incs/Total Village:',
+            'There was an error!': 'There was an error!',
+        },
+        fr_FR: {
+            'Tribe Players Under Attack': 'Joueur tribu sous attaque',
+            Help: 'Aide',
+            'Error fetching player incomings!':
+                'Erreur chargement ordres entrants!',
+            Village: 'Village',
+            Support: 'Support',
+            'No player is under attack!': 'Aucun joueur sous attaque!',
+            'Player Name': 'Pseudo du joueur',
+            Incomings: 'Entrants',
+            'Incs/Village Under Attack:': 'Ordres/Village sous Attaque:',
+            'Incs/Total Village:': 'Ordres/Total Village:',
+            'There was an error!': 'Oupsi il y a eu une erreur!',
+        },
         br_BR: {
             'Tribe Players Under Attack': 'Jogadores da tribo sobre ataque',
             Help: 'Ajuda',
