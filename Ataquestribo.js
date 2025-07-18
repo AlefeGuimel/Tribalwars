@@ -20,8 +20,8 @@ if (typeof DEBUG !== 'boolean') DEBUG = false;
 // Script Config
 var scriptConfig = {
     scriptData: {
-        prefix: 'Jogadores da tribo sobre ataque',
-        name: 'Jogadores da tribo sobre ataque',
+        prefix: 'tribePlayersUnderAttack',
+        name: 'Tribe Players Under Attack',
         version: 'v1.2.5',
         author: 'RedAlert',
         authorUrl: 'https://twscripts.dev/',
@@ -30,19 +30,19 @@ var scriptConfig = {
     },
     translations: {
         en_DK: {
-            'Tribe Players Under Attack': 'Jogadores da tribo sobre ataque',
-            Help: 'Ajuda',
+            'Tribe Players Under Attack': 'Tribe Players Under Attack',
+            Help: 'Help',
             'Error fetching player incomings!':
-                'Erro ao buscar dados dos jogadores!',
-            Village: 'Aldeia',
-            Support: 'Suporte',
-            'Villages under attack:': 'Aldeias sob ataque:',
-            'No player is under attack!': 'Nenhum jogador sobre ataque!',
-            'Player Name': 'Nome do jogador',
-            Incomings: 'Entradas',
-            'Incs/Village Under Attack:': 'Comandos/Aldeias sobre ataque:',
-            'Incs/Total Village:': 'Comandos/Total das aldeias:',
-            'There was an error!': 'Ops! Houve um erro!',
+                'Error fetching player incomings!',
+            Village: 'Village',
+            Support: 'Support',
+            'Villages under attack:': 'Villages under attack:',
+            'No player is under attack!': 'No player is under attack!',
+            'Player Name': 'Player Name',
+            Incomings: 'Incomings',
+            'Incs/Village Under Attack:': 'Incs/Village Under Attack:',
+            'Incs/Total Village:': 'Incs/Total Village:',
+            'There was an error!': 'There was an error!',
         },
         fr_FR: {
             'Tribe Players Under Attack': 'Joueur tribu sous attaque',
