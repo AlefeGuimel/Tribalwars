@@ -728,7 +728,7 @@ $.getScript(
                 thUnits += `
                     <th class="ra-text-center">
                         <label for="unit_${unit}" class="ra-unit-type">
-                            <img src="/graphic/unit/unit_${unit}.png">
+                            <img src="/graphic/unit/unit_${unit}.webp">
                         </label>
                     </th>
                 `;
