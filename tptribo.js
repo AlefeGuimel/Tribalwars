@@ -73,7 +73,7 @@ function addFilter() {
         if (isNaN(document.getElementById("value").value)) {
             UI.ErrorMessage("Insert a valid value", 3000);
         } else {
-            filters[document.getElementById("variable").value] = [[document.getElementById("kind").value, document.getElementById("value").value]];
+            filters[document.getElementById("variable").value] = [[document.getElementById("kind").value, document.getElementById("value").value]]; 
         }
     }
     localStorage.troopCounterFilter = JSON.stringify(filters);
@@ -116,12 +116,8 @@ function deleteFilter(filter, i) {
     openUI();
 }
 
-// ===================== LEITURA DE DADOS =====================
-
 function readData() {
     if (game_data.mode !== "members") return;
-
-    console.log("[TP] Iniciando readData()", new Date().toISOString());
 
     var html = '<label>Lendo…</label><progress id="bar" max="1" value="0"></progress>';
     Dialog.show("Progress bar", html);
@@ -138,8 +134,6 @@ function readData() {
         playerInfoList.push({ playerId: playerId, villageAmount: Number(villageAmount) || 0 });
     }
 
-    console.log("[TP] Jogadores detectados:", playerInfoList.length);
-
     var mode = localStorage.troopCounterMode;
     var data = "Coords,Player,";
     var unitsList = game_data.units;
@@ -152,26 +146,23 @@ function readData() {
 
     (function loop() {
         if (i >= playerInfoList.length) {
-            console.log("[TP] Fim da lista de jogadores. Chamando showData()");
+            window.exportedData = data;
             showData(data, mode);
             return;
         }
 
         var current = playerInfoList[i];
         var url = "https://" + window.location.host + "/game.php?screen=ally&mode=" + mode + "&player_id=" + current.playerId + "&page=" + pageNumber;
-        console.log("[TP] Requisitando jogador", i + 1, "/", playerInfoList.length, "id=", current.playerId, "page=", pageNumber);
 
         var page = $.ajax({ url: url, async: false });
         var html = page.responseText || "";
 
-        // Pega a tabela dentro de .table-responsive
         var idxWrap = html.indexOf('<div class="table-responsive">');
         var segment = idxWrap !== -1 ? html.slice(idxWrap) : html;
         var idxTable = segment.indexOf('<table class="vis w100">');
         var rows = segment.slice(idxTable).split("<tr>");
 
         var step = (mode === "members_defense") ? 2 : 1;
-        var parsedCount = 0;
 
         for (var j = 2; j + step < rows.length; j += step) {
             var rowHtml = rows[j];
@@ -189,7 +180,6 @@ function readData() {
                 villageData[unitsList[u - 1]] = clean;
             }
 
-            // aplica filtros
             var filtered = true;
             for (var key in filtres) {
                 for (var f = 0; f < filtres[key].length; f++) {
@@ -207,13 +197,8 @@ function readData() {
                 for (var z = 0; z < unitsList.length; z++) data += (villageData[unitsList[z]] || "0") + ",";
                 data += "\n";
             }
-
-            parsedCount++;
         }
 
-        console.log("[TP] Parseados", parsedCount, "vilas para jogador", current.playerId, "page=", pageNumber);
-
-        // Verifica se tem pagina seguinte
         var hasNext = /rel\s*=\s*["']?\s*next\s*["']?/i.test(html);
         if (hasNext) {
             pageNumber++;
@@ -228,8 +213,8 @@ function readData() {
 }
 
 function showData(data, mode) {
-    console.log("[TP] showData() chamado. mode=", mode, "tamanho do CSV=", (data || "").length);
-    var html = '<head></head><body><p><h2>Tribe data</h2>Mode selected: ' + mode + '</p><p><textarea readonly=true style="width:100%;height:300px;">' + data + '</textarea></p><p><input type="button" class="btn evt-confirm-btn btn-confirm-yes" id="download" onclick="download(\'tribe_info.csv\',data)" value="Download as csv"></input><input type="button" class="btn evt-confirm-btn btn-confirm-no" onclick="openUI()" value="Back to main menu"></input></p></body>';
+    window.exportedData = data;
+    var html = '<head></head><body><p><h2>Tribe data</h2>Mode selected: ' + mode + '</p><p><textarea readonly=true style="width:100%;height:300px;">' + data + '</textarea></p><p><input type="button" class="btn evt-confirm-btn btn-confirm-yes" id="download" onclick="download(\'tribe_info.csv\', window.exportedData)" value="Download as csv"></input><input type="button" class="btn evt-confirm-btn btn-confirm-no" onclick="openUI()" value="Back to main menu"></input></p></body>';
     Dialog.show("Tribe data", html);
 }
 
